@@ -115,6 +115,18 @@ legend { font-weight: 700; margin-bottom: 10px; padding: 0; }
 .modo:has(input:checked) { border-color: var(--tinta); background: var(--fondo); }
 .modo input { accent-color: var(--tinta); width: 18px; height: 18px; margin: 0; }
 
+.intro-nota { margin-top: 10px; color: var(--tinta-suave); font-size: 0.98rem; }
+
+.cantidad { display: grid; gap: 4px; margin-top: 16px; font-size: 0.92rem; color: var(--tinta-suave); max-width: 340px; }
+.cantidad select {
+  font: inherit; font-size: 1rem; color: var(--tinta);
+  padding: 10px 12px;
+  border: 1.5px solid var(--linea);
+  border-radius: 8px;
+  background: var(--superficie);
+}
+.cantidad select:focus-visible { border-color: var(--tinta); }
+
 .equipos { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 14px; }
 .equipos label { font-size: 0.92rem; color: var(--tinta-suave); display: grid; gap: 4px; }
 .equipos input {

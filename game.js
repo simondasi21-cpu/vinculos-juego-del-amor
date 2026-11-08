@@ -16,7 +16,8 @@
     jugadores: [],   // [{ nombre, puntos }]
     turno: 0,
     respuestas: [],  // [{ pareja, elegido, acierto, jugador }]
-    respondida: false
+    respondida: false,
+    cantidad: 12
   };
 
   function barajar(lista) {
@@ -26,6 +27,46 @@
       [copia[i], copia[j]] = [copia[j], copia[i]];
     }
     return copia;
+  }
+
+  // Recuerda qué parejas ya salieron en este navegador para no repetirlas pronto.
+  const CLAVE_VISTAS = "vinculos-vistas";
+
+  function leerVistas() {
+    try { return new Set(JSON.parse(localStorage.getItem(CLAVE_VISTAS)) || []); }
+    catch (e) { return new Set(); }
+  }
+
+  function guardarVistas(set) {
+    try { localStorage.setItem(CLAVE_VISTAS, JSON.stringify([...set])); }
+    catch (e) { /* sin almacenamiento: no pasa nada */ }
+  }
+
+  // Toma n parejas de un tipo, primero las que no han salido.
+  function tomarDeTipo(tipo, n, vistas) {
+    const delTipo = window.PAREJAS.filter((p) => p.tipo === tipo);
+    const nuevas = barajar(delTipo.filter((p) => !vistas.has(p.id)));
+    const repetidas = barajar(delTipo.filter((p) => vistas.has(p.id)));
+    return nuevas.concat(repetidas).slice(0, n);
+  }
+
+  // Selección equilibrada: mitad líquidas y mitad sólidas (±1 al azar si es impar).
+  function elegirParejas(cantidad) {
+    const vistas = leerVistas();
+    const total = Math.min(cantidad, window.PAREJAS.length);
+    let liquidas = Math.floor(total / 2);
+    if (total % 2 === 1 && Math.random() < 0.5) liquidas += 1;
+    const elegidas = tomarDeTipo("liquido", liquidas, vistas)
+      .concat(tomarDeTipo("solido", total - liquidas, vistas));
+
+    // Si ya se vieron casi todas, se reinicia la memoria.
+    elegidas.forEach((p) => vistas.add(p.id));
+    if (vistas.size >= window.PAREJAS.length) {
+      vistas.clear();
+      elegidas.forEach((p) => vistas.add(p.id));
+    }
+    guardarVistas(vistas);
+    return barajar(elegidas);
   }
 
   function mostrar(nombre) {
@@ -53,11 +94,14 @@
     } else {
       estado.jugadores = [{ nombre: "Puntos", puntos: 0 }];
     }
+    estado.cantidad = parseInt(datos.get("cantidad"), 10) || 12;
     iniciar();
   });
 
+  $("#total-banco").textContent = window.PAREJAS.length;
+
   function iniciar() {
-    estado.parejas = barajar(window.PAREJAS);
+    estado.parejas = elegirParejas(estado.cantidad || 12);
     estado.indice = 0;
     estado.turno = 0;
     estado.respuestas = [];

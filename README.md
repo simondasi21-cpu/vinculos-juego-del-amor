@@ -7,9 +7,10 @@ A cada participante se le presenta una pareja famosa de la ficción y debe decid
 ## Cómo jugar
 
 - Abre `index.html` en el navegador (o la página de GitHub Pages del repositorio).
-- Elige **Individual** o **Dos equipos por turnos**.
+- Elige **Individual** o **Dos equipos por turnos**, y cuántas parejas jugar (8, 12 o 20).
 - Responde con los botones o con las teclas **L** (líquido) y **S** (sólido).
-- Al final hay un repaso de las 12 parejas y preguntas para conversar en grupo.
+- El banco tiene 52 parejas (26 líquidas y 26 sólidas), entre series y películas. Cada partida saca una selección equilibrada y da prioridad a las que no han salido en ese navegador, para que no se aprendan las respuestas de memoria.
+- Al final hay un repaso de las parejas jugadas y preguntas para conversar en grupo.
 
 ## Archivos
 
