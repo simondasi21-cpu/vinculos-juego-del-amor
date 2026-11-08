@@ -5,11 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Vínculos: el juego del amor</title>
   <meta name="description" content="Juego interactivo para diferenciar el amor líquido del amor sólido a partir de parejas famosas de la ficción. Proyecto de CORE II, Universidad de La Sabana.">
-  <link rel="icon" href="logo.svg" type="image/svg+xml">
+  <link rel="icon" href="img/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="img/favicon-64.png" sizes="64x64" type="image/png">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+  <meta property="og:title" content="Vínculos: el juego del amor">
+  <meta property="og:description" content="¿Amor líquido o amor sólido? Un juego con parejas famosas del cine y la televisión.">
+  <meta property="og:image" content="https://simondasi21-cpu.github.io/vinculos-juego-del-amor/img/logo-completo.jpg">
+  <meta property="og:type" content="website">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Gloock&family=Figtree:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=2">
+  <link rel="stylesheet" href="styles.css?v=3">
 </head>
 <body>
   <main id="app">
@@ -17,10 +23,8 @@
     <!-- INICIO -->
     <section class="screen" id="pantalla-inicio" aria-labelledby="titulo">
       <div class="hero">
-        <svg class="logo" viewBox="0 0 120 80" aria-hidden="true">
-          <path class="aro-liquido" d="M47 14c-8 0-12 3-17 3s-9-2-13 1C8 25 6 35 8 44s9 18 18 21 22 2 30-6 11-18 9-27-9-18-18-18z" />
-          <rect class="aro-solido" x="54" y="13" width="52" height="54" rx="4" transform="rotate(8 80 40)" />
-        </svg>
+        <img class="logo" src="img/corazon.png" width="512" height="512" alt="">
+
         <h1 id="titulo">Vínculos<span class="subtitulo">el juego del amor</span></h1>
         <p class="intro">Les vamos a presentar parejas famosas del cine, la televisión y la literatura. Para cada una, decidan: ¿es amor líquido o amor sólido?</p>
         <p class="intro-nota">Cada partida saca parejas distintas de un banco de <span id="total-banco">52</span>.</p>
@@ -129,7 +133,7 @@
     </section>
 
   </main>
-  <script src="data.js?v=2"></script>
-  <script src="game.js?v=2"></script>
+  <script src="data.js?v=3"></script>
+  <script src="game.js?v=3"></script>
 </body>
 </html>

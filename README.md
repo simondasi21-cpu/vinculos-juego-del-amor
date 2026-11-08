@@ -1,4 +1,8 @@
+<p align="center"><img src="img/logo-completo.jpg" alt="Logo de Vínculos: el juego del amor" width="560"></p>
+
 # Vínculos: el juego del amor
+
+**Jugar en línea:** https://simondasi21-cpu.github.io/vinculos-juego-del-amor/
 
 Juego interactivo de clasificación estilo trivia para CORE II (Universidad de La Sabana, 2026).
 

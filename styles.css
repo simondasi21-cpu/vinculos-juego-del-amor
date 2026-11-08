@@ -49,9 +49,7 @@ a { color: var(--agua-oscuro); }
 
 .hero { text-align: center; padding: 24px 0 32px; }
 
-.logo { width: 132px; height: 88px; display: block; margin: 0 auto 12px; overflow: visible; }
-.aro-liquido { fill: none; stroke: var(--agua); stroke-width: 7; stroke-linejoin: round; }
-.aro-solido { fill: none; stroke: var(--roca); stroke-width: 7; stroke-linejoin: miter; }
+.logo { width: clamp(120px, 30vw, 168px); height: auto; display: block; margin: 0 auto 8px; }
 
 h1 {
   font-size: clamp(3.4rem, 13vw, 6.2rem);
