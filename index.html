@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vínculos: el juego del amor</title>
+  <meta name="description" content="Juego interactivo para diferenciar el amor líquido del amor sólido a partir de parejas famosas de la ficción. Proyecto de CORE II, Universidad de La Sabana.">
+  <link rel="icon" href="logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gloock&family=Figtree:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main id="app">
+
+    <!-- INICIO -->
+    <section class="screen" id="pantalla-inicio" aria-labelledby="titulo">
+      <div class="hero">
+        <svg class="logo" viewBox="0 0 120 80" aria-hidden="true">
+          <path class="aro-liquido" d="M47 14c-8 0-12 3-17 3s-9-2-13 1C8 25 6 35 8 44s9 18 18 21 22 2 30-6 11-18 9-27-9-18-18-18z" />
+          <rect class="aro-solido" x="54" y="13" width="52" height="54" rx="4" transform="rotate(8 80 40)" />
+        </svg>
+        <h1 id="titulo">Vínculos<span class="subtitulo">el juego del amor</span></h1>
+        <p class="intro">Les vamos a presentar parejas famosas del cine, la televisión y la literatura. Para cada una, decidan: ¿es amor líquido o amor sólido?</p>
+      </div>
+
+      <div class="conceptos">
+        <article class="concepto concepto-liquido">
+          <h2>Amor líquido</h2>
+          <p>Relaciones volátiles y pasajeras. Se busca lo inmediato, se huye del compromiso y la pareja se vuelve un objeto que se descarta cuando deja de servir.</p>
+        </article>
+        <article class="concepto concepto-solido">
+          <h2>Amor sólido</h2>
+          <p>Relaciones pensadas para durar. Crecen en las crisis con comunicación, renuncias y esfuerzo consciente: «hasta que la muerte nos separe».</p>
+        </article>
+      </div>
+
+      <form id="form-inicio" class="config">
+        <fieldset>
+          <legend>¿Cómo van a jugar?</legend>
+          <div class="modos">
+            <label class="modo"><input type="radio" name="modo" value="solo" checked> <span>Individual</span></label>
+            <label class="modo"><input type="radio" name="modo" value="equipos"> <span>Dos equipos por turnos</span></label>
+          </div>
+          <div class="equipos" id="campos-equipos" hidden>
+            <label>Equipo 1 <input type="text" name="eq1" value="Equipo Agua" maxlength="24"></label>
+            <label>Equipo 2 <input type="text" name="eq2" value="Equipo Roca" maxlength="24"></label>
+          </div>
+        </fieldset>
+        <button type="submit" class="btn btn-principal">Empezar a jugar</button>
+      </form>
+
+      <p class="credito">Proyecto de CORE II, Universidad de La Sabana, 2026.<br>Freddy Sebastián Serrano Ospina, Sofía Vallejo Benítez, María Paz Vela Lozano, Simón Sierra Daza y Santiago Torres Barrera.</p>
+    </section>
+
+    <!-- JUEGO -->
+    <section class="screen" id="pantalla-juego" hidden aria-live="polite">
+      <header class="marcador">
+        <div class="progreso">
+          <span id="txt-progreso">Pareja 1 de 12</span>
+          <div class="barra" aria-hidden="true"><div class="barra-relleno" id="barra"></div></div>
+        </div>
+        <div class="puntos" id="puntos"></div>
+      </header>
+
+      <p class="turno" id="turno" hidden></p>
+
+      <article class="tarjeta" id="tarjeta">
+        <p class="obra"><span id="obra"></span> <span class="anio" id="anio"></span></p>
+        <h2 class="pareja" id="pareja"></h2>
+        <p class="situacion" id="situacion"></p>
+      </article>
+
+      <div class="opciones" id="opciones">
+        <button type="button" class="btn-opcion opcion-liquido" data-tipo="liquido">
+          <span class="op-nombre">Amor líquido</span>
+          <span class="op-tecla">tecla L</span>
+        </button>
+        <button type="button" class="btn-opcion opcion-solido" data-tipo="solido">
+          <span class="op-nombre">Amor sólido</span>
+          <span class="op-tecla">tecla S</span>
+        </button>
+      </div>
+
+      <div class="resultado" id="resultado" hidden tabindex="-1">
+        <div class="borde-superior" aria-hidden="true"></div>
+        <div class="resultado-cuerpo">
+          <p class="veredicto" id="veredicto"></p>
+          <p class="respuesta" id="respuesta"></p>
+          <ul class="claves" id="claves"></ul>
+          <p class="justificacion" id="justificacion"></p>
+          <button type="button" class="btn btn-siguiente" id="btn-siguiente">Siguiente pareja</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL -->
+    <section class="screen" id="pantalla-final" hidden>
+      <div class="final-cabecera">
+        <p class="final-etiqueta" id="final-etiqueta">Su resultado</p>
+        <p class="final-puntaje" id="final-puntaje"></p>
+        <p class="final-mensaje" id="final-mensaje"></p>
+      </div>
+
+      <div class="reflexion">
+        <h2>Para conversar</h2>
+        <ul>
+          <li>¿Qué rasgos líquidos reconocen en las relaciones de hoy, en redes o aplicaciones de citas?</li>
+          <li>¿Qué hace falta para que una crisis fortalezca una relación en vez de terminarla?</li>
+          <li>¿Qué tipo de vínculos están construyendo ustedes con sus amigos, familia o pareja?</li>
+        </ul>
+      </div>
+
+      <h2 class="repaso-titulo">Repaso de las parejas</h2>
+      <ol class="repaso" id="repaso"></ol>
+
+      <button type="button" class="btn btn-principal" id="btn-reiniciar">Jugar de nuevo</button>
+
+      <p class="referencia">Velásquez, E. (2020). Liquid Love in Relationships: Towards the Viable Utopia of Happiness within Love. A Standpoint from Zygmunt Bauman and Pope Francis. <i>Escritos, 28</i>(61), 78–94. <a href="https://doi.org/10.18566/escr.v28n61.a06">https://doi.org/10.18566/escr.v28n61.a06</a></p>
+    </section>
+
+  </main>
+  <script src="data.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
